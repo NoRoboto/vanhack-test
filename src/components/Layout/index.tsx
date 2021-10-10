@@ -2,6 +2,7 @@ import React from 'react';
 import { View, StyleSheet, StyleProp, ViewStyle } from 'react-native';
 import { theme } from '~/styles/theme';
 
+// @TODO: reuse logic
 const CenterContainer: React.FC<{ styleProps?: StyleProp<ViewStyle> }> = ({ children, styleProps }) => {
   return <View style={[styles.centerContainer, styleProps]}>
     {children}

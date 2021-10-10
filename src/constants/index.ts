@@ -23,4 +23,12 @@ export default {
     MAX_VIDEO_LENGTH: 60, // seconds
     MAX_NUMBER_FAVORITES: 100,
   },
+  BACKGROUND_CARD: {
+    IMAGE_LIST: [
+      require('assets/card/card1.jpg'),
+      require('assets/card/card2.jpeg'),
+      require('assets/card/card3.jpeg'),
+    ],
+    ROTATION: 3
+  }
 };

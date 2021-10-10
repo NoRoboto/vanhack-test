@@ -1,11 +1,11 @@
 import React from 'react';
-import { Text, StyleSheet, TextProps } from 'react-native';
+import { Text, StyleSheet, TextProps, TextStyle } from 'react-native';
 
 import { theme } from '~/styles/theme'
 
 export type TTextProps = {
   message?: string,
-  variant: 'title' | 'subtitle' | 'shadow' | 'header' | 'bold',
+  variant: 'title' | 'subtitle' | 'shadow' | 'header' | 'bold' | 'simpleHeader' | 'bodyCard',
   props?: TextProps,
 }
 
@@ -45,5 +45,12 @@ const styles = StyleSheet.create({
     fontSize: theme.spacing[18],
     fontWeight: 'bold',
     color: theme.colors.tertiary.dark, 
+  },
+  simpleHeader: {
+    fontSize: theme.spacing[18],
+  },
+  bodyCard: {
+    fontSize: theme.spacing[14],
+    fontWeight: '700',
   }
 });

@@ -21,6 +21,7 @@ export interface ISpacing {
   '4': number;
   '8': number;
   '12': number;
+  '14': number;
   '16': number;
   '18': number;
   '20': number;

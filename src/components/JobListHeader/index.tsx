@@ -4,7 +4,7 @@ import { View, StyleSheet } from 'react-native';
 import { CustomText } from '~/components/Text';
 import COPY from '~/data/copy';
 
-export const JobListHeader: React.FC = () => {
+export const JobListHeader: React.FC<{jobsNumber?: number}> = ({ jobsNumber }) => {
   return (
       <View style={styles.container}>
         <CustomText 
@@ -23,7 +23,7 @@ export const JobListHeader: React.FC = () => {
               <CustomText 
                 variant='bold'
               >
-                50
+                { jobsNumber || '' }
               </CustomText>
               {` `}
               {COPY.jobListing.subtitle2}

@@ -3,18 +3,19 @@ import { FlatList, StyleSheet, Text, ActivityIndicator, View } from 'react-nativ
 
 import getJobList, { IJobItemProp } from '~/api/getJobList';
 import { Layout } from '~/components/Layout';
-import { useAppDispatch, useAppSelector } from '~/store/hooks';
 import { JobListHeader } from '~/components/JobListHeader';
+import { JobCard } from '~/components/JobCard';
 
 export const Home: React.FC = () => {
   const getJobListQuery = getJobList();
-  const renderItem = ({ item }: { item: IJobItemProp }) => {
-    return <Text>{item.companyName || ''}</Text>;
+  const total = getJobListQuery.data?.result?.items?.length || 0;
+  const renderItem = ({ item, index }: { item: IJobItemProp, index: number }) => {
+    return <JobCard item={item} index={index} total={total} />;
   }
 
   return (
     <Layout.ViewWrapper>
-      <JobListHeader />
+      <JobListHeader jobsNumber={total} />
       <Layout.Body>
         {getJobListQuery.isFetching && <ActivityIndicator color='red' size='large' />}
         {!getJobListQuery.isFetching && <FlatList

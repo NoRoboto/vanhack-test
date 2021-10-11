@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { ActivityIndicator } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import { Home } from '~/views/home';
+import { Favourites } from '~/views/favorites';
 import { Storage } from '~/components/AsyncStorage/storage';
 import { Onboarding } from '~/views/onboarding';
 import { useAppSelector, useAppDispatch } from '~/store/hooks';
@@ -11,7 +13,7 @@ import { setOnboardingFlag } from '~/store/slices/userPreferencesSlice';
 import { theme } from '~/styles/theme';
 import { Layout } from '~/components/Layout';
 
-const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
 
 function AppStack() {
   const userPreferences = useAppSelector((state) => state.userPreferences);
@@ -41,13 +43,48 @@ function AppStack() {
     return <Onboarding />;
   }
 
+  const tabBarIcon = (name: keyof typeof MaterialCommunityIcons.glyphMap) => (({ color, size }: { color: string, size: number }) => (
+    <MaterialCommunityIcons name={name} color={color} size={size} />
+  ));
+
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{
-        headerShown: false
-      }}>
-        <Stack.Screen name="Home" component={Home} />
-      </Stack.Navigator>
+      <Tab.Navigator
+        screenOptions={{
+          headerShown: false,
+          tabBarActiveTintColor: theme.colors.primary.light,
+          tabBarLabelStyle: {
+            fontSize: 15,
+            margin: 0,
+            padding: 0,
+          }
+        }}
+      >
+        <Tab.Screen
+          name="Home"
+          component={Home}
+          options={{
+            tabBarLabel: 'Home',
+            tabBarIcon: tabBarIcon('format-list-numbered'),
+          }}
+        />
+        <Tab.Screen
+          name="Favourites"
+          component={Favourites}
+          options={{
+            tabBarLabel: 'Fav',
+            tabBarIcon: tabBarIcon('bookmark-check-outline'),
+          }}
+        />
+        <Tab.Screen
+          name="Applied"
+          component={Favourites}
+          options={{
+            tabBarLabel: 'My Jobs',
+            tabBarIcon: tabBarIcon('check-box-multiple-outline'),
+          }}
+        />
+      </Tab.Navigator>
     </NavigationContainer>
   );
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, StyleSheet, Text, ActivityIndicator, View } from 'react-native';
+import { FlatList, StyleSheet, ActivityIndicator } from 'react-native';
 
 import getJobList, { IJobItemProp } from '~/api/getJobList';
 import { Layout } from '~/components/Layout';

@@ -2,18 +2,18 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 
 import { CustomText } from '~/components/Text';
-import COPY from '~/data/copy';
 
-export const JobListHeader: React.FC<{jobsNumber?: number}> = ({ jobsNumber }) => {
+export const ViewHeader: React.FC<{number: number, title: string, subtitle1: string, subtitle2: string }> = 
+({ number, title, subtitle1, subtitle2 }) => {
   return (
       <View style={styles.container}>
         <CustomText 
-          message={COPY.jobListing.title}
+          message={title}
           variant='header'
         />
         <View>
           <CustomText 
-            message={COPY.jobListing.subtitle1}
+            message={subtitle1}
             variant='shadow'
           />
           <View style={styles.counterWrapper}>
@@ -23,10 +23,10 @@ export const JobListHeader: React.FC<{jobsNumber?: number}> = ({ jobsNumber }) =
               <CustomText 
                 variant='bold'
               >
-                { jobsNumber || '' }
+                { number }
               </CustomText>
               {` `}
-              {COPY.jobListing.subtitle2}
+              {subtitle2}
             </CustomText>
           </View>
         </View>

@@ -15,8 +15,6 @@ const getData = async <T>(key: string): Promise<Partial<T | string | undefined>>
 
     if (jsonValue === null) return undefined;
 
-    if (typeof(jsonValue) === 'string') return jsonValue;
-
     return JSON.parse(jsonValue);
   } catch(e) {
     console.error('[error][getData]: ', e);

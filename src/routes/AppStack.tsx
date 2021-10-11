@@ -12,6 +12,7 @@ import { useAppSelector, useAppDispatch } from '~/store/hooks';
 import { setOnboardingFlag } from '~/store/slices/userPreferencesSlice';
 import { theme } from '~/styles/theme';
 import { Layout } from '~/components/Layout';
+import { loadBookmarksFromStorage, saveBookmarksToStorage } from '~/store/thunks/userPreferences';
 
 const Tab = createBottomTabNavigator();
 
@@ -29,6 +30,12 @@ function AppStack() {
 
   useEffect(() => {
     checkOnboardingStatus();
+    dispatch(loadBookmarksFromStorage());
+
+    return () => {
+      dispatch(saveBookmarksToStorage());
+    }
+
   }, []);
 
   if (loading) {

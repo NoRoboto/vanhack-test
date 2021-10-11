@@ -20,7 +20,9 @@ export const OnboardingItem: React.FC<{ item: IOnboardingItem, isLastItem: boole
   }
 
   return (
-    <Layout.CenterContainer styleProps={{ width, alignContent: 'stretch' }}>
+    <Layout.CenterContainer 
+      styleProps={{ width, alignContent: 'stretch' }}
+    >
       <Text variant='title' message={item.title} />
       <Text variant='subtitle' message={item.description} />
       <Image source={item.gif} style={[styles.image, { width, resizeMode: 'contain' }]} />

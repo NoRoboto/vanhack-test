@@ -1,13 +1,13 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import { Feather } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import { theme } from '~/styles/theme';
 
-export const Icon = ({ name }: { name: keyof typeof Feather.glyphMap; }) => {
+export const Icon = ({ name, size = 22 }: { name: keyof typeof MaterialCommunityIcons.glyphMap, size?: number }) => {
   return (
     <View style={styles.circle}>
-      <Feather name={name} size={20} color={theme.colors.tertiary.dark} />
+      <MaterialCommunityIcons name={name} size={size} color={theme.colors.tertiary.dark} />
     </View>
   );
 }

@@ -1,10 +1,10 @@
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ActivityIndicator } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { NavigationContainer, NavigatorScreenParams } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-import { Home } from '~/views/home';
 import { Favourites } from '~/views/favorites';
 import { Storage } from '~/components/AsyncStorage/storage';
 import { Onboarding } from '~/views/onboarding';
@@ -13,8 +13,17 @@ import { setOnboardingFlag } from '~/store/slices/userPreferencesSlice';
 import { theme } from '~/styles/theme';
 import { Layout } from '~/components/Layout';
 import { loadBookmarksFromStorage, saveBookmarksToStorage } from '~/store/thunks/userPreferences';
+import { JobDetailStack, FeedStackParams } from './Feed';
 
-const Tab = createBottomTabNavigator();
+export type RootStackParams = {
+  HomeTab: NavigatorScreenParams<FeedStackParams>;
+  FavouritesTab: undefined;
+  AppliedTab: undefined;
+};
+
+export type RootNavigationProps = NativeStackNavigationProp<RootStackParams, 'HomeTab'>;
+
+const Tab = createBottomTabNavigator<RootStackParams>();
 
 function AppStack() {
   const userPreferences = useAppSelector((state) => state.userPreferences);
@@ -59,24 +68,20 @@ function AppStack() {
       <Tab.Navigator
         screenOptions={{
           headerShown: false,
-          tabBarActiveTintColor: theme.colors.primary.light,
-          tabBarLabelStyle: {
-            fontSize: 15,
-            margin: 0,
-            padding: 0,
-          }
+          tabBarShowLabel: false,
+          tabBarActiveTintColor: theme.colors.primary.dark,
         }}
       >
         <Tab.Screen
-          name="Home"
-          component={Home}
+          name="HomeTab"
+          component={JobDetailStack}
           options={{
             tabBarLabel: 'Home',
             tabBarIcon: tabBarIcon('format-list-numbered'),
           }}
         />
         <Tab.Screen
-          name="Favourites"
+          name="FavouritesTab"
           component={Favourites}
           options={{
             tabBarLabel: 'Fav',
@@ -84,10 +89,10 @@ function AppStack() {
           }}
         />
         <Tab.Screen
-          name="Applied"
+          name="AppliedTab"
           component={Favourites}
           options={{
-            tabBarLabel: 'My Jobs',
+            tabBarLabel: 'MyJobsTabs',
             tabBarIcon: tabBarIcon('check-box-multiple-outline'),
           }}
         />

@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, ImageBackground, StyleSheet, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import { IJobItemProp } from '~/api/getJobList';
 import { Icon } from '~/components/CircleIcon';
@@ -12,8 +13,10 @@ import { saveBookmarksToStorage } from '~/store/thunks/userPreferences';
 import { useAppDispatch, useAppSelector } from '~/store/hooks';
 import { setBookmarkJob, getMemoizedBookmarkIds, removeBookmark } from '~/store/slices/userPreferencesSlice';
 import { CountryFlag } from '~/components/CountryFlag';
+import { RootNavigationProps } from '~/routes/AppStack';
 
 export const JobCard: React.FC<{ item: IJobItemProp, total: number, index: number }> = ({ item, total, index }) => {
+  const { navigate } = useNavigation<RootNavigationProps>();
   const backgroundImage = backgroundSelector(index, CONSTANTS.BACKGROUND_CARD.ROTATION, CONSTANTS.BACKGROUND_CARD.IMAGE_LIST);
   const dispatch = useAppDispatch();
   const bookmarkIds = useAppSelector((state) => getMemoizedBookmarkIds(state.userPreferences));
@@ -29,8 +32,12 @@ export const JobCard: React.FC<{ item: IJobItemProp, total: number, index: numbe
     dispatch(saveBookmarksToStorage());
   }
 
+  const goToJobDetails = () => {
+    navigate('HomeTab', { screen: 'Details', params: {} });
+  }
+
   return (
-    <TouchableOpacity onPress={() => console.warn('----> ')}>
+    <TouchableOpacity onPress={goToJobDetails}>
       <View style={styles.cardContainer}>
         <ImageBackground
           source={backgroundImage}

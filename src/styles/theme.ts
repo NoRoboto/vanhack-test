@@ -22,9 +22,10 @@ export const values = {
       dark: 'hsl(198, 16%, 84%)',
     },
     misc: {
-      error: 'hsl(0,100%,50%)',
+      error: '#d62828',
       disabled: 'hsl(0,0%,50%)',
       white: '#FFFF',
+      alternative: '#F8FAFA'
     },
   },
   // Apply scale transformations here

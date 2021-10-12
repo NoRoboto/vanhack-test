@@ -11,10 +11,10 @@ import COPY from '~/data/copy';
 
 export const Home: React.FC = () => {
   const getJobListQuery = getJobList();
-  const filterQueryData = getJobListQuery.data?.result?.items
+  const filterQueryData = getJobListQuery.data?.result?.items?.filter(job => job.canApply);
   const total = filterQueryData?.length || 0;
   const renderItem = ({ item, index }: { item: IJobItemProp, index: number }) => {
-    return <JobCard item={item} index={index} total={total} />;
+    return <JobCard item={item} index={index} />;
   }
 
   return (

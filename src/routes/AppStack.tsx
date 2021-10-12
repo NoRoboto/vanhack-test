@@ -6,13 +6,14 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import { Favourites } from '~/views/favorites';
+import { MyJobs } from '~/views/MyAppliedJobs';
 import { Storage } from '~/components/AsyncStorage/storage';
 import { Onboarding } from '~/views/onboarding';
 import { useAppSelector, useAppDispatch } from '~/store/hooks';
 import { setOnboardingFlag } from '~/store/slices/userPreferencesSlice';
 import { theme } from '~/styles/theme';
 import { Layout } from '~/components/Layout';
-import { loadBookmarksFromStorage, saveBookmarksToStorage } from '~/store/thunks/userPreferences';
+import { loadListFromStorage } from '~/store/thunks/userPreferences';
 import { JobDetailStack, FeedStackParams } from './Feed';
 
 export type RootStackParams = {
@@ -39,11 +40,8 @@ function AppStack() {
 
   useEffect(() => {
     checkOnboardingStatus();
-    dispatch(loadBookmarksFromStorage());
-
-    return () => {
-      dispatch(saveBookmarksToStorage());
-    }
+    dispatch(loadListFromStorage({ key: 'bookmarks' }));
+    //dispatch(loadListFromStorage({ key: 'jobs' }));
 
   }, []);
 
@@ -90,7 +88,7 @@ function AppStack() {
         />
         <Tab.Screen
           name="AppliedTab"
-          component={Favourites}
+          component={MyJobs}
           options={{
             tabBarLabel: 'MyJobsTabs',
             tabBarIcon: tabBarIcon('check-box-multiple-outline'),

@@ -3,12 +3,15 @@ import { Text, TouchableOpacity, StyleSheet, TouchableOpacityProps } from 'react
 import { theme } from '~/styles/theme';
 
 export type TButtonProps = {
-  text: string
+  text: string,
+  type?: 'accept' | 'cancel'
 }
 
-export const Button: React.FC<TButtonProps & TouchableOpacityProps> = ({ text, ...props }) => {
+export const Button: React.FC<TButtonProps & TouchableOpacityProps> = ({ text, type = 'accept',  ...props }) => {
+  const variationStyle = styles[type];
+
   return (
-    <TouchableOpacity style={styles.common} {...props}>
+    <TouchableOpacity style={[styles.common, variationStyle]} {...props}>
       <Text style={styles.text}>{text}</Text>
     </TouchableOpacity>
   );
@@ -19,9 +22,14 @@ const styles = StyleSheet.create({
     width: 150,
     height: 50,
     borderRadius: theme.spacing[18],
-    backgroundColor: theme.colors.primary.default,
     justifyContent: 'center',
     alignItems: 'center'
+  },
+  accept: {
+    backgroundColor: theme.colors.primary.default,
+  },
+  cancel: {
+    backgroundColor: theme.colors.misc.error,
   },
   text: {
     fontSize: theme.spacing[18],

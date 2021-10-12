@@ -8,32 +8,16 @@ import { theme } from '~/styles/theme';
 import { CustomText } from '../Text';
 import { backgroundSelector } from '~/helpers/image';
 import CONSTANTS from '~/constants'
-
-import { saveBookmarksToStorage } from '~/store/thunks/userPreferences';
-import { useAppDispatch, useAppSelector } from '~/store/hooks';
-import { setBookmarkJob, getMemoizedBookmarkIds, removeBookmark } from '~/store/slices/userPreferencesSlice';
 import { CountryFlag } from '~/components/CountryFlag';
+import { BookmarkButton } from '~/components/Button/BookmarkButton';
 import { RootNavigationProps } from '~/routes/AppStack';
 
-export const JobCard: React.FC<{ item: IJobItemProp, total: number, index: number }> = ({ item, total, index }) => {
+export const JobCard: React.FC<{ item: IJobItemProp, index: number, showBookmark?: boolean }> = ({ item, index, showBookmark = true }) => {
   const { navigate } = useNavigation<RootNavigationProps>();
   const backgroundImage = backgroundSelector(index, CONSTANTS.BACKGROUND_CARD.ROTATION, CONSTANTS.BACKGROUND_CARD.IMAGE_LIST);
-  const dispatch = useAppDispatch();
-  const bookmarkIds = useAppSelector((state) => getMemoizedBookmarkIds(state.userPreferences));
-  const isBookmarked = bookmarkIds.includes(item.id);
-
-  const bookmarkJob = () => {
-    if (isBookmarked) {
-      dispatch(removeBookmark(item.id));
-      return;
-    }
-
-    dispatch(setBookmarkJob(item));
-    dispatch(saveBookmarksToStorage());
-  }
 
   const goToJobDetails = () => {
-    navigate('HomeTab', { screen: 'Details', params: {} });
+    navigate('HomeTab', { screen: 'Details', params: { item } });
   }
 
   return (
@@ -55,7 +39,7 @@ export const JobCard: React.FC<{ item: IJobItemProp, total: number, index: numbe
               </CustomText>
             </View>
             <View style={{ width: '50%' }}>
-              <CustomText 
+              <CustomText
                 props={{ numberOfLines: 3 }}
                 variant='bodyCard'
               >
@@ -67,10 +51,13 @@ export const JobCard: React.FC<{ item: IJobItemProp, total: number, index: numbe
             </CustomText>
           </View>
           <View style={styles.rightArea}>
-            <TouchableOpacity onPress={bookmarkJob}>
-              <Icon name={isBookmarked ? 'bookmark-check-outline' : 'bookmark-outline'} />
-            </TouchableOpacity>
-            <View style={styles.verticalSeparator} />
+            {showBookmark && (
+              <>
+                <BookmarkButton item={item} />
+                <View style={styles.verticalSeparator} />
+              </>
+              )
+            }
             <CountryFlag flagCode={item.flagCode} />
           </View>
         </ImageBackground>

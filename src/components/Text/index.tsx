@@ -5,7 +5,7 @@ import { theme } from '~/styles/theme'
 
 export type TTextProps = {
   message?: string,
-  variant: 'title' | 'subtitle' | 'shadow' | 'header' | 'bold' | 'simpleHeader' | 'bodyCard',
+  variant: 'title' | 'subtitle' | 'shadow' | 'header' | 'bold' | 'simpleHeader' | 'bodyCard' | 'simpleBody',
   props?: TextProps,
 }
 
@@ -52,5 +52,9 @@ const styles = StyleSheet.create({
   bodyCard: {
     fontSize: theme.spacing[14],
     fontWeight: '700',
+  },
+  simpleBody: {
+    fontSize: theme.spacing[16],
+    fontWeight: '400',
   }
 });

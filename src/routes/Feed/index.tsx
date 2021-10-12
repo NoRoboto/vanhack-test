@@ -8,7 +8,7 @@ import { Home } from '~/views/home';
 
 export type FeedStackParams = {
   Feed: undefined;
-  Details: { item?: IJobItemProp };
+  Details: { item: IJobItemProp };
   Video: undefined;
 };
 

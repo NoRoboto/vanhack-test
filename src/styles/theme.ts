@@ -25,7 +25,7 @@ export const values = {
       error: '#d62828',
       disabled: 'hsl(0,0%,50%)',
       white: '#FFFF',
-      alternative: '#F8FAFA'
+      alternative: '#F8FAFA',
     },
   },
   // Apply scale transformations here

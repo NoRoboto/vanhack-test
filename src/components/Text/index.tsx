@@ -6,12 +6,13 @@ import { theme } from '~/styles/theme'
 export type TTextProps = {
   message?: string,
   variant: 'title' | 'subtitle' | 'shadow' | 'header' | 'bold' | 'simpleHeader' | 'bodyCard' | 'simpleBody',
+  color?: string,
   props?: TextProps,
 }
 
-export const CustomText: React.FC<TTextProps> = ({ message, variant, children, props }) => {
+export const CustomText: React.FC<TTextProps> = ({ message, variant, children, color = theme.colors.tertiary.dark, props }) => {
   
-  return <Text style={[styles.common, styles[variant]]} {...props}>
+  return <Text style={[styles.common, { color }, styles[variant]]} {...props}>
     {message || children}
   </Text>;
 }

@@ -19,15 +19,12 @@ export default {
   },
   share: {
     buildMessage: (position: string, description: string, salary: string, location: string) => `
-    At VanHack we have the best opportunities 😊: \n
-    Position 👔: ${position} \n
-    Description 💬: ${description} \n
-    Salary 💲: ${salary} \n
-    Location🗺️: ${location}
-
+    At VanHack we have the best opportunities 😊: \nPosition 👔: ${position} \nDescription 💬: ${description} \nSalary 💲: ${salary} \nLocation🗺️: ${location}
     Do you want to know more details ?, use Vanhack app!.
     `,
     title: 'VanHack Opportunity'
   },
-  emptyList: 'UPS, nothing to show !, add items to show them. 💾'
+  emptyList: 'UPS, nothing to show !, add items to show them. 💾',
+  cameraTitle: 'Video Recording is needed: \n\n',
+  cameraText: 'Before applying it is necessary to take a video telling us why you are the best candidate, Be creative and polite. 😎'
 }

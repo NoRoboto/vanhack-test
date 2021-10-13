@@ -59,7 +59,8 @@ Day 5: Finish detail view and video recording with preview.
 
 Not everything is perfect, since this project is an assestment carried out outside working hours, time played an important role:
 
-- No tests. 
+- No tests.
+- unused imports, lack of linter rules.
 - The logical navigation does not work at all well, bad UX.
 - Some UI components are more affectionate than others: p.
 - Some inconsistencies in the styles, the theme, typos, etc. are not reused. (I'm human).

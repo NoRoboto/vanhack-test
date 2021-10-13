@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction, createSelector } from '@reduxjs/toolkit'
 import { IJobItemProp } from '~/api/getJobList';
-import { loadListFromStorage } from '../thunks/userPreferences';
+import { loadListFromStorage, StorageManageProp } from '../thunks/userPreferences';
 
 export interface UserPreferencesState {
   showOnboarding: boolean;
@@ -49,8 +49,12 @@ export const userPreferencesSlice = createSlice({
     },
   },
   extraReducers: {
-    [loadListFromStorage.fulfilled.toString()]: (state, { payload }) => {
-      state.bookmarkList = payload || [];
+    [loadListFromStorage.fulfilled.toString()]: (state, { payload }: { payload: { key: 'bookmarks' | 'jobs', data: Array<IJobItemProp> } }) => {
+      if (payload.key === 'jobs') {
+        state.jobApplicationList = payload.data || [];
+      } else {
+        state.bookmarkList = payload.data || [];
+      }
     }
   }
 })

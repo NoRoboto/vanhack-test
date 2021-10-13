@@ -41,7 +41,7 @@ function AppStack() {
   useEffect(() => {
     checkOnboardingStatus();
     dispatch(loadListFromStorage({ key: 'bookmarks' }));
-    //dispatch(loadListFromStorage({ key: 'jobs' }));
+    dispatch(loadListFromStorage({ key: 'jobs' }));
 
   }, []);
 

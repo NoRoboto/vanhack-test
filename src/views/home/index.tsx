@@ -8,6 +8,7 @@ import { JobCard } from '~/components/JobCard';
 import AnimatedList from '~/components/AnimatedList';
 
 import COPY from '~/data/copy';
+import { theme } from '~/styles/theme';
 
 export const Home: React.FC = () => {
   const getJobListQuery = getJobList();
@@ -26,7 +27,11 @@ export const Home: React.FC = () => {
         number={total}
       />
       <Layout.Body>
-        {getJobListQuery.isFetching && <ActivityIndicator color='red' size='large' />}
+        {getJobListQuery.isFetching && (
+          <Layout.CenterContainer>
+            <ActivityIndicator color={theme.colors.primary.default} size='large' />
+          </Layout.CenterContainer>
+        )}
         {!getJobListQuery.isFetching && <AnimatedList data={filterQueryData} renderItem={renderItem} />}
       </Layout.Body>
     </Layout.ViewWrapper>

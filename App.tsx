@@ -6,7 +6,6 @@ import { QueryClientProvider } from 'react-query';
 import { StatusBar } from 'expo-status-bar';
 import { Provider as ReduxProvider } from 'react-redux';
 
-import { Onboarding } from '~/views/onboarding';
 import { queryClient } from '~/api';
 import AppStack from '~/routes/AppStack';
 import { store } from '~/store';

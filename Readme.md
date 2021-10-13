@@ -11,6 +11,19 @@
 </p>
 
 
+<p align="center">
+  <a>
+    <img src="https://github.com/NoRoboto/vanhack-test/blob/main/repo-ssets/image_1.gif?raw=true" alt="gif1" width=250 height=500>
+  </a>
+  <a>
+    <img src="https://github.com/NoRoboto/vanhack-test/blob/main/repo-ssets/image_2.gif?raw=true" alt="gif2" width=250 height=500>
+  </a>
+  <a>
+    <img src="https://github.com/NoRoboto/vanhack-test/blob/main/repo-ssets/image_3.gif?raw=true" alt="gif2" width=250 height=500>
+  </a>
+
+</p>
+
 ## Table of contents
 
 - [Quick start](#quick-start)

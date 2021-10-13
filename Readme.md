@@ -1,16 +1,12 @@
 <p align="center">
-  <a href="https://example.com/">
-    <img src="https://via.placeholder.com/72" alt="Logo" width=72 height=72>
+  <a href="https://vanhack.com/">
+    <img src="https://vanhack.com/static-desktop/bc0f9a39d96ccebe55f6503d0cb16121.svg" alt="Logo" width=72 height=72>
   </a>
 
   <h3 align="center">Logo</h3>
 
   <p align="center">
     Vanhack's test RN app
-    <br>
-    <a href="https://reponame/issues/new?template=bug.md">Report bug</a>
-    ·
-    <a href="https://reponame/issues/new?template=feature.md&labels=feature">Request feature</a>
   </p>
 </p>
 

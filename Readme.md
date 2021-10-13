@@ -74,9 +74,9 @@ Not everything is perfect, since this project is an assestment carried out outsi
 
 - No tests.
 - unused imports, lack of linter rules.
-- The logical navigation does not work at all well, bad UX.
-- Some UI components are more affectionate than others: p.
-- Some inconsistencies in the styles, the theme, typos, etc. are not reused. (I'm human).
+- The logical navigation does not work at all well, (little bad UX).
+- Some UI components are more polish than others.
+- Some inconsistencies in the styles, the theme (not reused), typos, etc. (I'm human).
 
 ## Creators
 

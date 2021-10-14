@@ -65,8 +65,8 @@ Day 5: Finish detail view and video recording with preview.
 * Typescript.
 * Animations for some components (card)
 * Onboarding flow.
-* Persistent bookmarks and job applications, last but not least, onboarding persistent state.
-* Video recording and vido preview.
+* Persistent storage bookmarks and job applications, last but not least, onboarding persistent state.
+* Video recording and video preview.
 
 ## Bugs and code smells 🐛
 
